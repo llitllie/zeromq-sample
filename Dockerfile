@@ -11,7 +11,7 @@ RUN set -ex \
     && apk add libstdc++ libtool openssl-dev \
     && git clone https://github.com/zeromq/zeromq4-x.git \
     && cd zeromq4-x && ./autogen.sh && ./configure && make && make install \
-    && docker-php-ext-install sockets \
+    && docker-php-ext-install sockets pcntl\
     && docker-php-source extract \
     && printf "/usr/local/lib\n" | pecl install zmq-1.1.3 \
     && docker-php-ext-enable zmq \
